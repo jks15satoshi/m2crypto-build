@@ -70,7 +70,7 @@ if ($Help) {
     exit
 }
 
-# Warning message, use "-no-warning" to skip.
+# Warning message, use "-NoWarnings" to skip.
 if (!${NoWarnings}) {
     $warn_msg = @"
 `nThis script will download or install programmes or files to your device. After
