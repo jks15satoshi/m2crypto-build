@@ -22,6 +22,13 @@ param (
 )
 
 function Write-Error {
+    <#
+    .SYNOPSIS
+        Output message with the foreground color as red and exit script.
+    
+    .PARAMETER Message
+        The output message.
+    #>
     param (
         [string] $Message
     )
@@ -29,7 +36,15 @@ function Write-Error {
     Write-Host $Message -ForegroundColor Red
     exit 1
 }
+
 function Install-OpenSSL {
+    <#
+    .SYNOPSIS
+        Install OpenSSL from the specified path.
+
+    .PARAMETER Path
+        The path to indicate where to install.
+    #>
     param (
         [string] $Path
     )
@@ -58,9 +73,13 @@ if ($Help) {
 # Warning message, use "-no-warning" to skip.
 if (!${NoWarnings}) {
     $warn_msg = @"
-`nThis script will download or install programmes or files to your device. After processing, you will be prompted to clean up the unnecessary files or reserve them.
-This script cannot grantee that will not destroy your device, so DO NOT RUN this script unless you completely understand what the intention of this script is.
-You can now press Ctrl+C to stop the process if you cannot trust this script or have no idea on how to handle the possible problems.
+`nThis script will download or install programmes or files to your device. After
+processing, you will be prompted to clean up the unnecessary files or reserve 
+them.
+This script cannot grantee that will not destroy your device, so DO NOT RUN this
+script unless you completely understand what the intention of this script is.
+You can now press Ctrl+C to stop the process if you cannot trust this script or 
+have no idea on how to handle the possible problems.
 "@
     Write-Warning $warn_msg
     Read-Host -Prompt "Press Enter to continue, or Ctrl+C to stop"
